@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: #(name)
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: #(domain_name)
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: #(service_name_which_want_to_expose)
+            port:
+              number: 5601
